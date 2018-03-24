@@ -7,4 +7,4 @@ class Event(object):
 
 	def getLength(self):
 		length = end-start
-		return length
+		return length 
