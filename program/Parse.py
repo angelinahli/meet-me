@@ -24,11 +24,16 @@ def parseCal(link):
 	return list
 
 def scheduler(user1, user2, length):
-	#ask for timeframe, only consider events within that timeframe
-	#length is mtg time
-	#create list of all possible appointments in timeframe, and then do smthg like in scheduler.java
 
-	#get start and end from users!!!!!!!
+	if(user1.getStart()>user2.getStart()): #make sure these methods exist in user class
+		start = user1.getStart()
+	else:
+		start = user2.getStart()
+
+	if(user1.getEnd()<user2.getEnd()):
+		end = user2.getEnd()
+	else:
+		end = user1.getEnd()
 
 	pos = []
 	i=start
