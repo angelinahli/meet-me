@@ -42,6 +42,7 @@ def scheduler(user1, user2, length):
 	j=start
 	k=0
 	while(j<end):
+<<<<<<< HEAD
 		if(user1.events[k].getStart() - pos[k].getEnd() >= length):
 			if(user2.events[k].getStart()-pos[k].getEnd() >= length):
 				sched.append(pos[k]) #if the time slot doesn't conflict with either user, it is added to the schedule
@@ -65,3 +66,6 @@ def scheduler(user1, user2, length):
 
 
 
+=======
+		if(user1.events[k].getEnd())
+>>>>>>> 4ac93d20349a025497ac1d7756cec8390f122874
