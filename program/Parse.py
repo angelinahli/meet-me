@@ -1,6 +1,7 @@
 from icalendar import Calendar, Event
 from datetime import datetime
 from pytz import UTC # timezone
+from Event import Event
 
 #person = User()
 
@@ -10,7 +11,7 @@ for component in cal.walk("vevent"):
     name = component.get('summary')
     start = component.get('dtstart')
     end = component.get('dtend')
-    #temp = Event(name, start, end)
+    temp = Event(name, start, end)
     print name
     print start
     print end

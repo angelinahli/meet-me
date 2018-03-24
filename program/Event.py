@@ -6,5 +6,11 @@ class Event(object):
 		self.end = end
 
 	def getLength(self):
-		length = end-start
-		return length 
+		length = self.end-self.start
+		return length
+
+	def getStart(self):
+		return self.start
+
+	def getEnd(self):
+		return self.end
