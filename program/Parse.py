@@ -2,9 +2,10 @@ from icalendar import Calendar, Event
 from datetime import datetime
 from pytz import UTC # timezone
 from Event import Event
+from datetime import datetime, timedelta
 
 
-def parseCal(link): #this is a static method?
+def parseCal(link):
 
 	list = []
 
@@ -21,6 +22,10 @@ def parseCal(link): #this is a static method?
 	c.close()
 
 	return list
+
+def scheduler(user1, user2):
+	#users should have properties of start, end, and desired mtg length
+
 
 
 
