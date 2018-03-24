@@ -12,6 +12,7 @@ for component in cal.walk("vevent"):
     name = component.get('summary')
     start = component.decoded('dtstart')
     end = component.decoded('dtend')
+    print type(end)
     temp = Event(name, start, end)
     print temp
     #add temp event to user's list of events
