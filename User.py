@@ -4,23 +4,28 @@ username, email, and events so that it could be used to compare schedules and
 find free time with other users
 """
 
-name = "User"
-username = ""
-email = ""
-events = []
-
 class User(object):
-    def __init__(self, name, username, email):
-        if(type(name) == type("")):
-            self.name = name
+    def __init__(self, firstName, lastName, email, username, password):
+        if(type(firstName) == type("")):
+            self.firstName = firstName
+        else:
+            self.firstName = "User's"
 
-        if(type(username) == type("")):
-            self.username = username
+        if(type(lastName) == type("")):
+            self.lastName = lastName
+        else:
+            self.lastName = "Name"
 
         if(type(email) == type("")):
             self.email = email
 
-    def user_events(userEvents):
+        if(type(username) == type("")):
+            self.username = username
+
+        if(type(password) == type("")):
+            self.password = password
+
+    def setUserEvents(self, userEvents):
         """
         Stores the user's events in an array
         """
@@ -29,3 +34,19 @@ class User(object):
         else:
             events = []
 
+    def updateEvents(self, moreEvents):
+        userEvents += moreEvents
+
+    def getName(self):
+        print(self.name)
+
+    def getEmail(self):
+        print(self.email)
+
+    def getUsername(self):
+        print(self.username)
+
+    def getPassword(self):
+        print(self.password)
+
+    def reset
