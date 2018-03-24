@@ -38,7 +38,7 @@ class User(object):
         userEvents += moreEvents
 
     def getName(self):
-        print(self.name)
+        print(self.firstName + " " + self.lastName)
 
     def getEmail(self):
         print(self.email)
@@ -49,4 +49,17 @@ class User(object):
     def getPassword(self):
         print(self.password)
 
-    def reset
+    def resetFirstName(self, newFirstName):
+        self.firstName = newFirstName
+
+    def resetLastName(self, newLastName):
+        self.lastName = newLastName
+
+    def resetEmail(self, newEmail):
+        self.email = newEmail
+
+    def resetUsername(self, newUsername):
+        self.username = newUsername
+
+    def resetPassword(self, newPassword):
+        self.password = newPassword
