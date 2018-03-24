@@ -3,6 +3,7 @@ This class is meant to store the user information like the user's name,
 username, email, and events so that it could be used to compare schedules and
 find free time with other users
 """
+from datetime import datetime, timedelta
 
 class User(object):
     def __init__(self, firstName, lastName, email, username, password):
@@ -38,16 +39,16 @@ class User(object):
         userEvents += moreEvents
 
     def getName(self):
-        print(self.firstName + " " + self.lastName)
+        return(self.firstName + " " + self.lastName)
 
     def getEmail(self):
-        print(self.email)
+        return self.email
 
     def getUsername(self):
-        print(self.username)
+        return self.username
 
     def getPassword(self):
-        print(self.password)
+        return self.password
 
     def resetFirstName(self, newFirstName):
         self.firstName = newFirstName
