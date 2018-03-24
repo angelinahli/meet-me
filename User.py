@@ -8,7 +8,7 @@ from Parse import parseCal
 
 
 class User(object):
-    def __init__(self, firstName, lastName, email, username, password, link):
+    def __init__(self, firstName, lastName, email, username, password, link, start, end):
         if(type(firstName) == type("")):
             self.firstName = firstName
         else:
@@ -32,6 +32,9 @@ class User(object):
             self.userEvents = parseCal(link)
         else:
             #throw exception?
+
+        self.start = start #parse these when taking them in from form? how do we get them to datetime form?
+        self.end = end
 
     # def setUserEvents(self, userEvents):
     #     """
