@@ -23,8 +23,10 @@ def parseCal(link):
 
 	return list
 
-def scheduler(user1, user2):
-	#users should have properties of start, end, and desired mtg length
+def scheduler(user1, user2, length):
+	#ask for timeframe, only consider events within that timeframe
+	#length is mtg time
+	#create list of all possible appointments in timeframe, and then do smthg like in scheduler.java
 
 
 
