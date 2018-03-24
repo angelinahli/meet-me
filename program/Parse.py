@@ -10,6 +10,7 @@ class Parse:
 	
 		c = open("link", "rb")
 		cal = Calendar.from_ical(c.read())
+		lst = []
 		for component in cal.walk("vevent"):
 		    name = component.get('summary')
 		    start = component.decoded('dtstart')
