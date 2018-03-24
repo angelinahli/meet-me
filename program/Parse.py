@@ -20,6 +20,8 @@ def parseCal(link): #this is a static method?
 	        
 	c.close()
 
+	return list
+
 
 
 
