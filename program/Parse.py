@@ -28,12 +28,32 @@ def scheduler(user1, user2, length):
 	#length is mtg time
 	#create list of all possible appointments in timeframe, and then do smthg like in scheduler.java
 
+	#get start and end from users!!!!!!!
+
 	pos = []
 	i=start
 	while(i<end): #populates list with all possible appointments
 		temp = Event("free", i, i+length)
 		pos.append(temp)
 		i=i+length
+
+	sched = []
+
+	j=start
+	k=0
+	while(j<end):
+		if(user1.events[k].getEnd())
+
+
+
+
+
+
+
+
+
+
+
 
 
 
