@@ -4,9 +4,11 @@ username, email, and events so that it could be used to compare schedules and
 find free time with other users
 """
 from datetime import datetime, timedelta
+from Parse import parseCal
+
 
 class User(object):
-    def __init__(self, firstName, lastName, email, username, password):
+    def __init__(self, firstName, lastName, email, username, password, link):
         if(type(firstName) == type("")):
             self.firstName = firstName
         else:
@@ -25,6 +27,11 @@ class User(object):
 
         if(type(password) == type("")):
             self.password = password
+
+        if(link[-4:] == ".ics"):
+            self.userEvents = parseCal(link)
+        else:
+            #throw exception?
 
     def setUserEvents(self, userEvents):
         """
