@@ -4,12 +4,16 @@ One of the problems with existing applications like when2meet, doodle, etc. that
 
 ## features
 
-* import your schedule from an .ics file
-* compare different schedules for compatible times
-    * user specifies minimum amount of time they want to meet for
-    * user specifies time frame they'd like to meet within (don't make them meet at night)
-* maintain user profiles so that their schedules are saved
-* (optional) have user change their schedule online
+* back end tasks
+    * import your schedule from an .ics file
+    * compare different schedules for compatible times
+        * user specifies minimum amount of time they want to meet for
+        * user specifies time frame they'd like to meet within (don't make them meet at night)
+* front end tasks
+    * allow user to upload their .ics files
+    * match with another user based on their username?
+    * maintain user profiles so that their schedules are saved
+    * (optional) have user change their schedule online
 
 ## what we'd need to build
 
@@ -18,4 +22,3 @@ One of the problems with existing applications like when2meet, doodle, etc. that
 * have some way of comparing multiple peoples' calendars to find a time they are mutually free during
 * have some way of displaying when people are free
 * then show users when they are mutually free
-
