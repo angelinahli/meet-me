@@ -16,10 +16,16 @@ class User(object):
 
         if(type(username) == type("")):
             self.username = username
-        self.email = email
+
+        if(type(email) == type("")):
+            self.email = email
 
     def user_events(userEvents):
+        """
+        Stores the user's events in an array
+        """
         if(type(userEvents) == type([0, 1, 2, 3, 4])):
             events = userEvents
         else:
             events = []
+
