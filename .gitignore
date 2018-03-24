@@ -1,0 +1,4 @@
+# a .gitignore file tells github what files to 'not sync'
+# the * symbol is a wildcard symbol that means "match every file that is in the format <any string>.pyc"
+# this gitignore file says: "ignore all files that are python cache files"
+*.pyc
