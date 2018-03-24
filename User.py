@@ -33,17 +33,15 @@ class User(object):
         else:
             #throw exception?
 
-    def setUserEvents(self, userEvents):
-        """
-        Stores the user's events in an array
-        """
-        if(type(userEvents) == type([0, 1, 2, 3, 4])):
-            events = userEvents
-        else:
-            events = []
+    # def setUserEvents(self, userEvents):
+    #     """
+    #     Stores the user's events in an array
+    #     """
+    #     if(type(userEvents) == type([0, 1, 2, 3, 4])):
+    #         events = userEvents
+    #     else:
+    #         events = []
 
-    def updateEvents(self, moreEvents):
-        userEvents += moreEvents
 
     def getName(self):
         return(self.firstName + " " + self.lastName)
