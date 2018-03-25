@@ -25,7 +25,7 @@ def parseCal(link):
 
 def scheduler(user1, user2, length):
 
-	if(user1.getStart()>user2.getStart()): #make sure these methods exist in user class
+	if(user1.getStart()>user2.getStart()):
 		start = user1.getStart()
 	else:
 		start = user2.getStart()
@@ -35,12 +35,14 @@ def scheduler(user1, user2, length):
 	else:
 		end = user1.getEnd()
 
+	leng = timedelta(minutes=length)
+
 	pos = []
 	i=start
 	while(i<end): #populates list with all possible appointments
-		temp = Event("free", i, i+length)
+		temp = Event("free", i, (i+leng))
 		pos.append(temp)
-		i=i+length
+		i = i+leng
 
 	sched = [] #empty list, will be filled with times that work
 
