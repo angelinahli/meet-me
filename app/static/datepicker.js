@@ -1,7 +1,7 @@
 $(document).ready(function() {
-    $("#datepicker").datepicker();
+    $("#start").datepicker();
   });
 
 
- var startdate = $(".start").datepicker("getDate()");
+ var startdate = $("#start").datepicker("getDate()");
  console.log(startdate);
