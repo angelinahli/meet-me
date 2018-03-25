@@ -39,22 +39,37 @@ def scheduler(user1, user2, length):
 
 	pos = []
 	i=start
-	while(i<end): #populates list with all possible appointments
+	while(i<end-leng): #populates list with all possible appointments
 		temp = Event("free", i, (i+leng))
 		pos.append(temp)
 		i = i+leng
 
 	sched = [] #empty list, will be filled with times that work
 
-	j=start
-	k=0
-	while(j<end):
-		if(user1.getEvents[k].getStart() - pos[k].getEnd() >= length):
-			if(user2.getEvents[k].getStart()-pos[k].getEnd() >= length):
-				sched.append(pos[k]) #if the time slot doesn't conflict with either user, it is added to the schedule
-		k=k+1
+	u1 = user1.getEvents()
+	u2 = user2.getEvents()
+	conflicts = u1 + u2
+
+	for element in pos:
+		conflicts = False
+		for Event in conflicts:
+			if isConflicting(element, evt):
+				conflicts = True
+				break
+		if not conflicts:
+			sched.append(element)
+
 
 	return sched
+
+
+
+def isConflicting(evt1, evt2):
+	out = False
+
+	if(evt1.getStart() - )
+
+
 
 
 
