@@ -13,3 +13,7 @@ def login():
     login = LoginForm()
     dct = {"title": "Login", "form": login}
     return flask.render_template("login.html", **dct)
+
+@app.route("/settings/")
+def settings():
+    pass
