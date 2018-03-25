@@ -25,7 +25,7 @@ def parseCal(link):
 
 def scheduler(user1, user2, length):
 
-	if(user1.getStart()>user2.getStart()): #make sure these methods exist in user class
+	if(user1.getStart()>user2.getStart()):
 		start = user1.getStart()
 	else:
 		start = user2.getStart()
@@ -35,24 +35,44 @@ def scheduler(user1, user2, length):
 	else:
 		end = user1.getEnd()
 
+	leng = timedelta(minutes=length)
+
 	pos = []
 	i=start
-	while(i<end): #populates list with all possible appointments
-		temp = Event("free", i, i+length)
+	while(i<end-leng): #populates list with all possible appointments
+		temp = Event("free", i, (i+leng))
 		pos.append(temp)
-		i=i+length
+		i = i+leng
 
 	sched = [] #empty list, will be filled with times that work
 
-	j=start
-	k=0
-	while(j<end):
-		if(user1.getEvents[k].getStart() - pos[k].getEnd() >= length):
-			if(user2.getEvents[k].getStart()-pos[k].getEnd() >= length):
-				sched.append(pos[k]) #if the time slot doesn't conflict with either user, it is added to the schedule
-		k=k+1
+	u1 = user1.getEvents()
+	u2 = user2.getEvents()
+	conflicts = u1 + u2
+
+	for element in pos:
+		conflicts = False
+		for Event in conflicts:
+			if isConflicting(element, evt):
+				conflicts = True
+				break
+		if not conflicts:
+			sched.append(element)
+
 
 	return sched
+
+
+
+def isConflicting(evt1, evt2):
+	conflicting = False
+
+	if(evt1.getStart() < evt2.getEnd() and evt1.getEnd() > evt2.getStart()): #not 100% confident in logic
+		conflicting = True
+
+	return conflicting
+
+
 
 
 
