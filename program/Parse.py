@@ -40,7 +40,7 @@ def scheduler(user1, user2, length):
 	pos = []
 	i=start
 	while(i<end-leng): #populates list with all possible appointments
-		temp = Event("free", i, (i+leng))
+		temp = Event("", i, (i+leng))
 		pos.append(temp)
 		i = i+leng
 
@@ -52,8 +52,8 @@ def scheduler(user1, user2, length):
 
 	for element in pos:
 		conflicts = False
-		for Event in conflicts:
-			if isConflicting(element, evt):
+		for l in conflicts:
+			if isConflicting(element, l):
 				conflicts = True
 				break
 		if not conflicts:
