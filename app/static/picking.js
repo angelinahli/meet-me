@@ -1,7 +1,6 @@
 $(document).ready(function() {
 	console.log("working");
-	debugger;
-    $j("#start").datepicker();
+    $("#start").datepicker();
   });
 
 
