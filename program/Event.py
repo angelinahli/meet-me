@@ -9,5 +9,5 @@ class Event(object):
 		self.length = self.end - self.start
 		
 	def __str__(self):
-		out = strftime(start) + " to " + strftime(end)
+		out = self.start.srftime("%A, %d. %B %Y %I:%M%p") + " to " + self.end.strftime("%A, %d. %B %Y %I:%M%p")
 		return out

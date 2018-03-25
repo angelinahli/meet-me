@@ -11,4 +11,5 @@ me = User("sarah", "seidman", "sarahseidman", "pass12345", "test_files/calendar.
 
 friend = User("joanna", "miral", "jnmiral", "pass23423", "test_files/cal2.ics", s, e)
 
-print scheduler(me, friend, 25)
+for x in scheduler(me, friend, 25):
+	print x.name, x.start.strftime("%A, %d. %B %Y %I:%M%p"), x.end.strftime("%A, %d. %B %Y %I:%M%p")
