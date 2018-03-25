@@ -8,7 +8,7 @@ from Parse import parseCal
 
 
 class User(object):
-    def __init__(self, firstName, lastName, email=None, username, password, link, start, end):
+    def __init__(self, firstName, lastName, username, password, link, start, end, email=None):
         
         self.firstName = firstName if type(firstName) == type("") else "User's"
         self.lastName = lastName if type(lastName) == type("") else "Name"

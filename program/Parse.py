@@ -13,6 +13,7 @@ def parseCal(link):
 	cal = Calendar.from_ical(c.read())
 	for component in cal.walk("vevent"):
 	    name = component.get('summary')
+
 	    start = component.decoded('dtstart')
 	    end = component.decoded('dtend')
 	    temp = Event(name, start, end)
@@ -51,10 +52,10 @@ def scheduler(user1, user2, length):
 	conflicts = u1 + u2
 
 	for element in pos:
-		conflicts = False
-		for l in conflicts:
-			if isConflicting(element, l):
-				conflicts = True
+		conflictz = False
+		for eve in conflicts:
+			if isConflicting(element, eve):
+				conflictz = True
 				break
 		if not conflicts:
 			sched.append(element)
