@@ -1,3 +1,9 @@
+"""
+This class contains methods to take in calendar data from .ics files and to
+generate a schedule of free meeting times based on the calendar input from 2
+users.
+"""
+
 from icalendar import Calendar, Event
 from datetime import datetime
 from pytz import utc # timezone
