@@ -16,3 +16,7 @@ class Event(object):
 
 	def getEnd(self):
 		return self.end
+
+	def __str__(self):
+		out = strftime(start) + " to " + strftime(end)
+		return out
