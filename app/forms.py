@@ -44,5 +44,7 @@ class SignUpForm(FlaskForm):
     ])
 
 class NewEventForm(FlaskForm):
+    event_name = StringField("Event name", validators=[DataReqMsg()])
     start_time = DateTimeField("Start period", validators=[DataReqMsg()])
     end_time = DateTimeField("End period", validators=[DataReqMsg()])
+    usernames = StringField("Usernames", validators=[DataReqMsg()])

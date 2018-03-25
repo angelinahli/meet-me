@@ -7,10 +7,21 @@
     <!-- start time -->
     <div class="form-group">
         <p>
+            {{ form.event_name.label }}<br>
+            {{ form.event_name(size=50) }}
+        </p>
+        {% for m in form.event_name.errors %}
+            <span style="color: red;">{{m}}</span>
+        {% endfor %}
+    </div>
+
+    <!-- start time -->
+    <div class="form-group">
+        <p>
             {{ form.start_time.label }}<br>
             {{ form.start_time(size=50) }}
         </p>
-        <small id="title-search-help" class="form-text text-muted">Enter the earliest possible start date and time of your event in the format: <b>%Y-%m-%d %H:%M:%S</b></small>
+        <small class="form-text text-muted">Enter the earliest possible start date and time of your event in the format: <b>%Y-%m-%d %H:%M:%S</b></small>
         {% for m in form.start_time.errors %}
             <span style="color: red;">{{m}}</span>
         {% endfor %}
@@ -22,8 +33,20 @@
             {{ form.end_time.label }} <br>
             {{ form.end_time(size=50) }}
         </p>
-        <small id="title-search-help" class="form-text text-muted">Enter the latest possible end date and time of your event in the format: <b>%Y-%m-%d %H:%M:%S</b></small>
+        <small class="form-text text-muted">Enter the latest possible end date and time of your event in the format: <b>%Y-%m-%d %H:%M:%S</b></small>
         {% for m in form.end_time.errors %}
+            <span style="color: red;">{{m}}</span>
+        {% endfor %}
+    </div>
+
+    <!-- usernames -->
+    <div class="form-group">
+        <p>
+            {{ form.usernames.label }}<br>
+            {{ form.usernames(size=50) }}
+        </p>
+        <small class="form-text text-muted">Enter the usernames of all users joining your event, separated by commas</b></small>
+        {% for m in form.usernames.errors %}
             <span style="color: red;">{{m}}</span>
         {% endfor %}
     </div>
