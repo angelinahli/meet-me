@@ -8,33 +8,21 @@ from Parse import parseCal
 
 
 class User(object):
-    def __init__(self, firstName, lastName, email, username, password, link, start, end):
+    def __init__(self, firstName, lastName, email=None, username, password, link, start, end):
         
         self.firstName = firstName if type(firstName) == type("") else "User's"
+        self.lastName = lastName if type(lastName) == type("") else "Name"
+        self.email = email
+        self.username = username
+        self.password = password
 
-        if(type(lastName) == type("")):
-            self.lastName = lastName
-        else:
-            self.lastName = "Name"
-
-        if(type(email) == type("")):
-            self.email = email
-
-        if(type(username) == type("")):
-            self.username = username
-
-        if(type(password) == type("")):
-            self.password = password
-
+        link = link.strip()
         if(link[-4:] == ".ics"):
             self.link = link
             self.events = parseCal(link)
-        #else:
-            #throw exception?
 
         self.start = start #start and end should already be datetime objects
         self.end = end
-
 
     def getName(self):
         return(self.firstName + " " + self.lastName)
