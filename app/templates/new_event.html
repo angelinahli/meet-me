@@ -1,5 +1,12 @@
 {% extends "base.html" %}
 
+<!-- {% block js %}
+<link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.4/themes/smoothness/jquery-ui.css">
+<script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.4/jquery-ui.min.js"></script>
+<script src="{{ url_for('static', filename='picking.js') }}"></script>
+
+{% endblock %} -->
+
 {% block content %}
 <form method="POST" action="">
     {{ form.hidden_tag() }}
@@ -17,26 +24,29 @@
 
     <!-- start time -->
     <div class="form-group">
-        <p>
+        <!-- <p>
             {{ form.start_time.label }}<br>
             {{ form.start_time(size=50) }}
         </p>
         <small class="form-text text-muted">Enter the earliest possible start date and time of your event in the format: <b>%Y-%m-%d %H:%M:%S</b></small>
         {% for m in form.start_time.errors %}
             <span style="color: red;">{{m}}</span>
-        {% endfor %}
+        {% endfor %} -->
+        <input id="start" />
+        
     </div>
 
     <!-- end time -->
     <div class="form-group">
-        <p>
+        <!-- <p>
             {{ form.end_time.label }} <br>
             {{ form.end_time(size=50) }}
         </p>
         <small class="form-text text-muted">Enter the latest possible end date and time of your event in the format: <b>%Y-%m-%d %H:%M:%S</b></small>
         {% for m in form.end_time.errors %}
             <span style="color: red;">{{m}}</span>
-        {% endfor %}
+        {% endfor %} -->
+        <input id="end" />
     </div>
 
     <!-- minutes taken -->
@@ -65,4 +75,5 @@
 
     <button type="submit" class="btn btn-success">Get Times</button>
 </form>
+
 {% endblock %}
