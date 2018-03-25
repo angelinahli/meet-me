@@ -36,15 +36,6 @@ class User(object):
         self.start = strptime(start) #should convert string to datetime object
         self.end = strptime(end)
 
-    # def setUserEvents(self, userEvents):
-    #     """
-    #     Stores the user's events in an array
-    #     """
-    #     if(type(userEvents) == type([0, 1, 2, 3, 4])):
-    #         events = userEvents
-    #     else:
-    #         events = []
-
 
     def getName(self):
         return(self.firstName + " " + self.lastName)
