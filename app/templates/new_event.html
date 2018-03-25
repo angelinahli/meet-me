@@ -1,5 +1,12 @@
 {% extends "base.html" %}
 
+{% block js %}
+<link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.4/themes/smoothness/jquery-ui.css">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.4/jquery-ui.min.js"></script>
+<script src="{{ url_for('static', filename='datepicker.js') }}"></script>
+{% endblock %}
+
 {% block content %}
 <form method="POST" action="">
     {{ form.hidden_tag() }}
@@ -17,14 +24,17 @@
 
     <!-- start time -->
     <div class="form-group">
-        <p>
+        <!-- <p>
             {{ form.start_time.label }}<br>
             {{ form.start_time(size=50) }}
-        </p>
-        <small class="form-text text-muted">Enter the earliest possible start date and time of your event in the format: <b>%Y-%m-%d %H:%M:%S</b></small>
+        </p> -->
+        <!-- <small class="form-text text-muted">Enter the earliest possible start date and time of your event in the format: <b>%Y-%m-%d %H:%M:%S</b></small>
         {% for m in form.start_time.errors %}
             <span style="color: red;">{{m}}</span>
-        {% endfor %}
+        {% endfor %} -->
+        <form>
+            <input id="start" />
+        </form>
     </div>
 
     <!-- end time -->
