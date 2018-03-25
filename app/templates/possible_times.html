@@ -1,0 +1,11 @@
+{% extends "base.html" %}
+{% block content %}
+<ul class="list-group">
+{% for event in events %}
+    <li class="list-group-item">
+        Start: {{ event.get_formatted_start() }} <br>
+        End: {{ event.get_formatted_end() }}
+    </li>
+{% endfor %}
+</ul>
+{% endblock %}

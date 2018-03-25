@@ -29,10 +29,9 @@ def parse_cal(link):
 def is_conflicting(evt1, evt2):
 	return (evt1.start < evt2.end) and (evt1.end > evt2.start)
 
-def scheduler(user1, user2, length):
-	start = max(user1.start, user2.start)
-	end = min(user1.end, user2.end)
-	leng = timedelta(minutes=length)
+def schedule(start_time, end_time, minutes, user_list):
+	"""Return list of events that work for all users"""
+	leng = timedelta(minutes=minutes)
 
 	pos = []
 	time = start
@@ -41,8 +40,10 @@ def scheduler(user1, user2, length):
 		pos.append(new_event)
 		time += leng
 
-	sched = [] # empty list, will be filled with times that work
-	conflicts = user1.events + user2.events
+	sched = []
+	conflicts = []
+	for user in user_list:
+		conflicts += user.events
 
 	for candidate in pos:
 		has_conflict = False

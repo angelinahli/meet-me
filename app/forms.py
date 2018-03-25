@@ -1,5 +1,5 @@
 from flask_wtf import FlaskForm
-from wtforms import StringField, PasswordField, DateTimeField
+from wtforms import StringField, PasswordField, DateTimeField, IntegerField
 from wtforms.validators import DataRequired, Length, EqualTo
 
 from program_info import info
@@ -45,6 +45,11 @@ class SignUpForm(FlaskForm):
 
 class NewEventForm(FlaskForm):
     event_name = StringField("Event name", validators=[DataReqMsg()])
-    start_time = DateTimeField("Start period", validators=[DataReqMsg()])
-    end_time = DateTimeField("End period", validators=[DataReqMsg()])
+    start_time = DateTimeField("Start period", validators=[
+        DataRequired(message="Invalid datetime format.")
+    ])
+    end_time = DateTimeField("End period", validators=[
+        DataRequired(message="Invalid datetime format.")
+    ])
+    minutes = IntegerField("Total time needed (minutes)", validators=[DataReqMsg()])
     usernames = StringField("Usernames", validators=[DataReqMsg()])

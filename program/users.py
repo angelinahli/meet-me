@@ -8,7 +8,7 @@ import simplejson
 from datetime import *
 from parse import parse_cal
 
-# helper functions to communicate with json """"database"""" (fix later)
+# helper functions
 
 def get_user_dicts(filepath):
     with open(filepath, "rb") as fl:
@@ -16,9 +16,17 @@ def get_user_dicts(filepath):
     return simplejson.loads(all_text)
 
 def valid_new_user(username, filepath=None, user_dicts=None):
-    assert filepath or user_dicts
-    all_user_dicts = user_dicts if user_dicts else get_user_dicts(filepath)
+    assert filepath or (user_dicts != None)
+    all_user_dicts = user_dicts if user_dicts != None else get_user_dicts(filepath)
     return username not in all_user_dicts
+
+def valid_existing_user(username, filepath=None, user_dicts=None):
+    return not valid_new_user(username, filepath=filepath, user_dicts=user_dicts)
+
+def valid_login(username, password, filepath=None, user_dicts=None):
+    assert filepath or (user_dicts != None)
+    all_user_dicts = user_dicts if user_dicts != None else get_user_dicts(filepath)
+    return all_user_dicts[username]["password"] == password
 
 def add_user_db(filepath, first_name, last_name, username, password, link):
     all_user_dicts = get_user_dicts(filepath)
@@ -33,7 +41,14 @@ def add_user_db(filepath, first_name, last_name, username, password, link):
         simplejson.dump(all_user_dicts, fl)
     print "Added user", username
 
-# user related objects
+def valid_userlist_length(usernames):
+    """Checks whether or not there are at least two usernames in list"""
+    return len(userlist.split(",")) >= 2
+
+def get_userlist(usernames):
+    return [username.strip().lower() for username in usernames.split(",")]
+
+# user object
 
 class User(object):
     def __init__(self, first_name, last_name, username, password, link):
@@ -47,36 +62,12 @@ class User(object):
         if(link[-4:] == ".ics"):
             self.link = link
             self.events = parse_cal(link)
+        
         else:
-            print link
+            print "failed link:", link
 
     def get_name(self):
-        return(self.first_name + " " + self.last_name)
-
-class Users(object):
-
-    def __init__(self, filepath):
-        self.all_users = dict()
-        user_dicts = get_user_dicts(filepath)
-        for user, dct in user_dicts.items():
-            new_user = User(
-                first_name=dct.get("first_name"),
-                last_name=dct.get("last_name"),
-                username=user,
-                password=dct.get("password"),
-                link=dct.get("link"),
-            )
-            self.all_users[user] = new_user
-
-    def check_valid_user(self, username, password):
-        # get method won't throw an exception
-        user = self.all_users.get(username)
-        if not user:
-            return False
-        return user.password == password
-
-    def get_user(self, username):
-        return self.all_users.get(username) # returns none if none exists
+        return self.first_name + " " + self.last_name
 
 if __name__ == "__main__":
     fp = "../app/static/user_data.json"

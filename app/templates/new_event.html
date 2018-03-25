@@ -1,7 +1,7 @@
 {% extends "base.html" %}
 
 {% block content %}
-<form method="GET" action="">
+<form method="POST" action="">
     {{ form.hidden_tag() }}
 
     <!-- start time -->
@@ -35,6 +35,18 @@
         </p>
         <small class="form-text text-muted">Enter the latest possible end date and time of your event in the format: <b>%Y-%m-%d %H:%M:%S</b></small>
         {% for m in form.end_time.errors %}
+            <span style="color: red;">{{m}}</span>
+        {% endfor %}
+    </div>
+
+    <!-- minutes taken -->
+
+    <div class="form-group">
+        <p>
+            {{ form.minutes.label }}<br>
+            {{ form.minutes(size=50) }}
+        </p>
+        {% for m in form.minutes.errors %}
             <span style="color: red;">{{m}}</span>
         {% endfor %}
     </div>
