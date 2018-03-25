@@ -10,8 +10,6 @@ from program.parse import schedule
 from program_info import info
 from forms import LoginForm, SignUpForm, NewEventForm
 
-# db_filepath = flask.url_for("static", filename="user_data.json")
-
 @app.route("/")
 @app.route("/index/")
 def index():
@@ -146,10 +144,11 @@ def possible_times():
     user_list = [ User(**user_dicts[username]) for username in usernames ]
 
     times = schedule(start_time, end_time, minutes, user_list)
+    mini_cal = MiniCalendar(events=times)
     
     dct = {
         "title": "Possible Meeting Times for {}".format(event_name),
-        "events": times
+        "calendar": mini_cal.calendar
     }
     return flask.render_template("possible_times.html", **dct)
 

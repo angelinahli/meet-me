@@ -1,11 +1,18 @@
 {% extends "base.html" %}
 {% block content %}
+<div class="row">
+{% for date, events in calendar.items() %}
+<div class="col-sm-3">
+<h5 class="text-center">{{ date }}</h5>
 <ul class="list-group">
-{% for event in events %}
-    <li class="list-group-item">
-        Start: {{ event.get_formatted_start() }} <br>
-        End: {{ event.get_formatted_end() }}
+    {% for event in events %}
+    <li class="list-group-item text-center">
+        {{ event.start }} - {{ event.end }}
     </li>
-{% endfor %}
+    {% endfor %}
 </ul>
+<br>
+</div>
+{% endfor %}
+</div>
 {% endblock %}
