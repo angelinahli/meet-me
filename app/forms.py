@@ -50,7 +50,7 @@ class SignUpForm(FlaskForm):
     confirm = PasswordField("Repeat Password")
 
 class SettingsForm(FlaskForm):
-    pass
+    upload = 
 
 class NewEventForm(FlaskForm):
     pass
