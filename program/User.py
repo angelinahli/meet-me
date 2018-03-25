@@ -26,36 +26,3 @@ class User(object):
 
     def getName(self):
         return(self.firstName + " " + self.lastName)
-
-    def getEmail(self):
-        return self.email
-
-    def getUsername(self):
-        return self.username
-
-    def getPassword(self):
-        return self.password
-
-    def getEvents(self):
-        return self.events
-
-    def getStart(self):
-        return self.start
-
-    def getEnd(self):
-        return self.end
-
-    def resetFirstName(self, newFirstName):
-        self.firstName = newFirstName
-
-    def resetLastName(self, newLastName):
-        self.lastName = newLastName
-
-    def resetEmail(self, newEmail):
-        self.email = newEmail
-
-    def resetUsername(self, newUsername):
-        self.username = newUsername
-
-    def resetPassword(self, newPassword):
-        self.password = newPassword
