@@ -3,14 +3,35 @@
 {% block content %}
 <form method="POST" action="" id="login">
     {{ form.hidden_tag() }}
+    
+    <!-- username -->
     <p>
         {{ form.username.label }} <br>
         {{ form.username(size=32) }}
     </p>
+    {% if form.username.errors %}
+    <ul class="list-group">
+    {% for m in form.username.errors %}
+        <li class="list-group-item">{{m}}</li>
+    {% endfor %}
+    </ul>
+    {% endif %}
+
+    <!-- password -->
     <p>
         {{ form.password.label }} <br>
         {{ form.password(size=32) }}
     </p>
-    <p>{{ form.submit() }}</p>
+    {% if form.password.errors %}
+    <ul class="list-group">
+    {% for m in form.password.errors %}
+        <li class="list-group-item">{{m}}</li>
+    {% endfor %}
+    </ul>
+    {% endif %}
+
+    <button type="submit" class="btn btn-success">Log In</button>
 </form>
+<br><br>
+<p class="lead"><a href="{{ url_for('signup') }}">Sign up for an account here.</a></p>
 {% endblock %}

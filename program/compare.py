@@ -1,14 +1,17 @@
-from Parse import parseCal, scheduler, isConflicting
-from User import *
-from Event import *
+from parse import parse_cal, scheduler, is_conflicting
+from users import *
+from events import *
 from datetime import *
 
-s = datetime.today() #aware datetime
-temp = timedelta(days=3)
-e = datetime.today() + temp #aware datetime
+testing_mode = False
 
-me = User("sarah", "seidman", "sarahseidman", "pass12345", "test_files/calendar.ics", s, e)
+if __name__ == "__main__" and testing_mode:
+    s = datetime.today() #aware datetime
+    temp = timedelta(days=3)
+    e = datetime.today() + temp #aware datetime
 
-friend = User("joanna", "miral", "jnmiral", "pass23423", "test_files/cal2.ics", s, e)
+    me = User("sarah", "seidman", "sarahseidman", "pass12345", "test_files/calendar.ics", s, e)
 
-print scheduler(me, friend, 25)
+    friend = User("joanna", "miral", "jnmiral", "pass23423", "test_files/cal2.ics", s, e)
+
+    print scheduler(me, friend, 25)

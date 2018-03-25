@@ -1,58 +1,45 @@
 from flask_wtf import FlaskForm
-from wtforms import StringField, PasswordField, SubmitField
+from wtforms import StringField, PasswordField
 from wtforms.validators import DataRequired, Length, EqualTo
 
 from program_info import info
 
-# helper functions
+# helper validator classes
 
-def get_length_v(len_dict, field_name):
-    """
-    Given a dictionary of min and max lengths, as well as the name of
-    the field we want the length validator for, will return a Length() validator
-    """
-    min_len = len_dict["min"]
-    max_len = len_dict["max"]
-    msg = "Need to provide a {name} between {min} and {max} characters long.".format(
-        name=field_name,
-        min=min_len,
-        max=max_len
-    )
+class DataReqMsg(DataRequired):
+    def __init__(self):
+        DataRequired.__init__(self, message="Data required.")
 
-    return Length(
-        min=min_len,
-        max=max_len,
-        message=msg
-    )
+class LengthMsg(Length):
+    def __init__(self, len_dict, field_name):
+        lmin = len_dict["min"]
+        lmax = len_dict["max"]
+        lmessage = ("Need to provide a {name} between {min} and " + 
+            "{max} characters long.").format(
+                name=field_name,
+                min=lmin,
+                max=lmax
+        )
+        Length.__init__(self, min=lmin, max=lmax, message=lmessage)
 
-
-# classes
+# form classes
 
 class LoginForm(FlaskForm):
-    username = StringField("Username", validators=[
-        DataRequired(message="Data required.")
-    ])
-    password = PasswordField("Password", validators=[
-        DataRequired(message="Data required.")
-    ])
-    submit = SubmitField("Sign in")
+    username = StringField("Username", validators=[DataReqMsg()])
+    password = PasswordField("Password", validators=[DataReqMsg()])
 
 class SignUpForm(FlaskForm):
+    first_name = StringField("First Name", validators=[DataReqMsg()])
+    last_name = StringField("Last Name", validators=[DataReqMsg()])
     username = StringField("Username", validators=[
-        DataRequired(message="Data required."),
-        get_length_v(info["username"], "username")
+        DataReqMsg(),
+        LengthMsg(info["username"], "username")
     ])
-    password = PasswordField("New Password", validators=[
-        DataRequired(message="Data required."),
-        get_length_v(info["password"], "password"),
-        EqualTo("confirm", message="Passwords must match.")
+    password = PasswordField("Password", validators=[
+        DataReqMsg(),
+        LengthMsg(info["password"], "password"),
     ])
-    confirm = PasswordField("Repeat Password")
-    submit = SubmitField("Sign Up")
-
-
-class SettingsForm(FlaskForm):
-    pass
-
-class NewEventForm(FlaskForm):
-    pass
+    confirm = PasswordField("Repeat Password", validators=[
+        EqualTo("password", message="Passwords must match.")
+    ])
+    elts = [first_name, last_name, username, password, confirm]

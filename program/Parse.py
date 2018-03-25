@@ -4,7 +4,7 @@ from pytz import utc # timezone
 from Event import Event
 from datetime import datetime, timedelta
 
-def parseCal(link):
+def parse_cal(link):
 	"""Returns a list of all events in someone's calendar"""
 	lst = []
 	with open(link, "rb") as c:
@@ -19,7 +19,7 @@ def parseCal(link):
 	    lst.append(temp)
 	return lst
 
-def isConflicting(evt1, evt2):
+def is_conflicting(evt1, evt2):
 	return (evt1.start < evt2.end) and (evt1.end > evt2.start)
 
 def scheduler(user1, user2, length):
@@ -40,7 +40,7 @@ def scheduler(user1, user2, length):
 	for candidate in pos:
 		has_conflict = False
 		for event in conflicts:
-			if isConflicting(candidate, event):
+			if is_conflicting(candidate, event):
 				has_conflict = True
 				break
 		if not has_conflict:
