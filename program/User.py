@@ -21,8 +21,8 @@ class User(object):
             self.link = link
             self.events = parseCal(link)
 
-        self.start = strptime(start) #should convert string to datetime object
-        self.end = strptime(end)
+        self.start = start #start and end should already be datetime objects
+        self.end = end
 
     def getName(self):
         return(self.firstName + " " + self.lastName)

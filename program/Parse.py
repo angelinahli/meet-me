@@ -13,6 +13,7 @@ def parseCal(link):
 	cal = Calendar.from_ical(all_text)
 	for component in cal.walk("vevent"):
 	    name = component.get('summary')
+
 	    start = component.decoded('dtstart')
 	    end = component.decoded('dtend')
 	    temp = Event(name, start, end)
