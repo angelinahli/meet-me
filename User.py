@@ -29,12 +29,12 @@ class User(object):
             self.password = password
 
         if(link[-4:] == ".ics"):
-            self.userEvents = parseCal(link)
+            self.events = parseCal(link)
         else:
             #throw exception?
 
-        self.start = start #parse these when taking them in from form? how do we get them to datetime form?
-        self.end = end
+        self.start = strptime(start) #should convert string to datetime object
+        self.end = strptime(end)
 
     # def setUserEvents(self, userEvents):
     #     """
