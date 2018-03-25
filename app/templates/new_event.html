@@ -24,29 +24,26 @@
 
     <!-- start time -->
     <div class="form-group">
-        <!-- <p>
+        <p>
             {{ form.start_time.label }}<br>
             {{ form.start_time(size=50) }}
         </p>
         <small class="form-text text-muted">Enter the earliest possible start date and time of your event in the format: <b>%Y-%m-%d %H:%M:%S</b></small>
         {% for m in form.start_time.errors %}
             <span style="color: red;">{{m}}</span>
-        {% endfor %} -->
-        <input id="start" />
-        
+        {% endfor %}        
     </div>
 
     <!-- end time -->
     <div class="form-group">
-        <!-- <p>
+        <p>
             {{ form.end_time.label }} <br>
             {{ form.end_time(size=50) }}
         </p>
         <small class="form-text text-muted">Enter the latest possible end date and time of your event in the format: <b>%Y-%m-%d %H:%M:%S</b></small>
         {% for m in form.end_time.errors %}
             <span style="color: red;">{{m}}</span>
-        {% endfor %} -->
-        <input id="end" />
+        {% endfor %}
     </div>
 
     <!-- minutes taken -->
