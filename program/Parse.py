@@ -1,6 +1,6 @@
 from icalendar import Calendar, Event
 from datetime import datetime
-from pytz import UTC # timezone
+from pytz import utc # timezone
 from Event import Event
 from datetime import datetime, timedelta
 
@@ -30,9 +30,9 @@ def scheduler(user1, user2, length):
 	pos = []
 	time = start
 	while(time < end - leng):
-		new_event = Event("free", time, time + leng)
+		new_event = Event("free", utc.localize(time), utc.localize(time + leng))
 		pos.append(new_event)
-		i += leng
+		time += leng
 
 	sched = [] # empty list, will be filled with times that work
 	conflicts = user1.events + user2.events
@@ -44,5 +44,5 @@ def scheduler(user1, user2, length):
 				has_conflict = True
 				break
 		if not has_conflict:
-			sched.append(element)
+			sched.append(candidate)
 	return sched
