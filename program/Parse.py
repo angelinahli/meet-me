@@ -29,8 +29,15 @@ def parse_cal(link):
 def is_conflicting(evt1, evt2):
 	return (evt1.start < evt2.end) and (evt1.end > evt2.start)
 
+def reasonable_time(evt):
+	"""Returns true if the event occurs not within 12-6am"""
+	return int(evt.start.hour) not in xrange(0, 6)
+
 def schedule(start, end, minutes, user_list):
-	"""Return list of events that work for all users"""
+	"""
+	Return list of events that work for all users
+	Without hours between 12-6am
+	"""
 	leng = timedelta(minutes=minutes)
 
 	pos = []
@@ -46,11 +53,11 @@ def schedule(start, end, minutes, user_list):
 		conflicts += user.events
 
 	for candidate in pos:
-		has_conflict = False
+		is_possible = True
 		for event in conflicts:
-			if is_conflicting(candidate, event):
-				has_conflict = True
+			if is_conflicting(candidate, event) or not reasonable_time(candidate):
+				is_possible = False
 				break
-		if not has_conflict:
+		if is_possible:
 			sched.append(candidate)
 	return sched

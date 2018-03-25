@@ -1,1 +1,5 @@
+<<<<<<< HEAD
 {"hclint": {"username": "hclint", "first_name": "hillary", "password": "1234567", "link": "/Users/SarahSeidman/Documents/GitHub/meet-me/app/tmp/ical_files/hclinttestcal2.ics", "last_name": "clinton"}}
+=======
+{"sseidman": {"username": "sseidman", "first_name": "sarah", "password": "123456", "link": "/Users/angie/Desktop/Programs/in_progress/meet_me/app/tmp/ical_files/sseidmantestcal1.ics", "last_name": "seidman"}, "amalclooney": {"username": "amalclooney", "first_name": "Amal", "password": "badass", "link": "/Users/angie/Desktop/Programs/in_progress/meet_me/app/tmp/ical_files/amalclooneytestcal1.ics", "last_name": "Clooney"}, "georgeclooney": {"username": "georgeclooney", "first_name": "George", "password": "nottooshabby", "link": "/Users/angie/Desktop/Programs/in_progress/meet_me/app/tmp/ical_files/georgeclooneytestcal2.ics", "last_name": "Clooney"}}
+>>>>>>> 9075fbe7e1991500bc55b9ac43414ed107acccb2
