@@ -1,6 +1,7 @@
 $(document).ready(function() {
 	console.log("working");
     $("#start").datepicker();
+    $("#end").datepicker();
   });
 
 
