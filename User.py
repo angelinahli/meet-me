@@ -58,6 +58,15 @@ class User(object):
     def getPassword(self):
         return self.password
 
+    def getEvents(self):
+        return self.events
+
+    def getStart(self):
+        return self.start
+
+    def getEnd(self):
+        return self.end
+
     def resetFirstName(self, newFirstName):
         self.firstName = newFirstName
 
