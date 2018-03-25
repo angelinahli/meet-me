@@ -9,10 +9,8 @@ from Parse import parseCal
 
 class User(object):
     def __init__(self, firstName, lastName, email, username, password, link, start, end):
-        if(type(firstName) == type("")):
-            self.firstName = firstName
-        else:
-            self.firstName = "User's"
+        
+        self.firstName = firstName if type(firstName) == type("") else "User's"
 
         if(type(lastName) == type("")):
             self.lastName = lastName
@@ -31,7 +29,7 @@ class User(object):
         if(link[-4:] == ".ics"):
             self.link = link
             self.events = parseCal(link)
-        else:
+        #else:
             #throw exception?
 
         self.start = strptime(start) #should convert string to datetime object

@@ -4,13 +4,13 @@ username, email, and events so that it could be used to compare schedules and
 find free time with other users
 """
 from datetime import datetime, timedelta
+from Parse import parseCal
+
 
 class User(object):
-    def __init__(self, firstName, lastName, email, username, password):
-        if(type(firstName) == type("")):
-            self.firstName = firstName
-        else:
-            self.firstName = "User's"
+    def __init__(self, firstName, lastName, email, username, password, link, start, end):
+        
+        self.firstName = firstName if type(firstName) == type("") else "User's"
 
         if(type(lastName) == type("")):
             self.lastName = lastName
@@ -26,29 +26,36 @@ class User(object):
         if(type(password) == type("")):
             self.password = password
 
-    def setUserEvents(self, userEvents):
-        """
-        Stores the user's events in an array
-        """
-        if(type(userEvents) == type([0, 1, 2, 3, 4])):
-            events = userEvents
-        else:
-            events = []
+        if(link[-4:] == ".ics"):
+            self.link = link
+            self.events = parseCal(link)
+        #else:
+            #throw exception?
 
-    def updateEvents(self, moreEvents):
-        userEvents += moreEvents
+        self.start = strptime(start) #should convert string to datetime object
+        self.end = strptime(end)
+
 
     def getName(self):
-        print(self.firstName + " " + self.lastName)
+        return(self.firstName + " " + self.lastName)
 
     def getEmail(self):
-        print(self.email)
+        return self.email
 
     def getUsername(self):
-        print(self.username)
+        return self.username
 
     def getPassword(self):
-        print(self.password)
+        return self.password
+
+    def getEvents(self):
+        return self.events
+
+    def getStart(self):
+        return self.start
+
+    def getEnd(self):
+        return self.end
 
     def resetFirstName(self, newFirstName):
         self.firstName = newFirstName

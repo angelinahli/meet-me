@@ -7,7 +7,7 @@ s = datetime.today()
 temp = timedelta(days=3)
 e = datetime.today() + temp
 
-me = User("sarah", "seidman", "sarah4di@gmail.com", "sarahseidman", "pass12345", "test_files/calendar.ics", s, e)
+me = User(firstName="sarah", lastName="seidman", email="sarah4di@gmail.com", username="sarahseidman", password="pass12345", link="test_files/calendar.ics", start=s, end=e)
 
 friend = User("joanna", "miral", "jnm@aol.com", "jnmiral", "pass23423", "test_files/cal2.ics", s, e)
 
