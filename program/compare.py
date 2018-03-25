@@ -1,7 +1,7 @@
 from Parse import parseCal, scheduler, isConflicting
 from User import *
 from Event import *
-from datetime import datetime, timedelta
+from datetime import *
 
 s = datetime.today()
 temp = timedelta(days=3)
