@@ -29,6 +29,7 @@ class User(object):
             self.password = password
 
         if(link[-4:] == ".ics"):
+            self.link = link
             self.events = parseCal(link)
         else:
             #throw exception?
