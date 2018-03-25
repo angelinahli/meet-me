@@ -43,7 +43,7 @@ def add_user_db(filepath, first_name, last_name, username, password, link):
 
 def valid_userlist_length(usernames):
     """Checks whether or not there are at least two usernames in list"""
-    return len(userlist.split(",")) >= 2
+    return len(usernames.split(",")) >= 2
 
 def get_userlist(usernames):
     return [username.strip().lower() for username in usernames.split(",")]

@@ -29,7 +29,7 @@ def parse_cal(link):
 def is_conflicting(evt1, evt2):
 	return (evt1.start < evt2.end) and (evt1.end > evt2.start)
 
-def schedule(start_time, end_time, minutes, user_list):
+def schedule(start, end, minutes, user_list):
 	"""Return list of events that work for all users"""
 	leng = timedelta(minutes=minutes)
 

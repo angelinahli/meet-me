@@ -1,4 +1,4 @@
-from datetime import datetime, timedelta, strftime
+from datetime import datetime, timedelta
 from pytz import utc # timezone
 
 # helper functions
@@ -13,11 +13,11 @@ def valid_start_endtime(start, end):
 
 class Event(object):
 
-	def __init__(self, name, start, end):
-		self.name = name
-		self.start = start # start and end are datetime objects
-		self.end = end
-		self.length = self.end - self.start
+    def __init__(self, name, start, end):
+        self.name = name
+        self.start = start # start and end are datetime objects
+        self.end = end
+        self.length = self.end - self.start
 
     def get_formatted_start(self):
         return self.start.strftime("%A, %d. %B %Y %I:%M%p")

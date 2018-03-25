@@ -1,5 +1,6 @@
 import flask
 import os
+from datetime import datetime
 from werkzeug.utils import secure_filename
 
 from app import app
@@ -114,30 +115,35 @@ def new_event():
 
         schedule = dict(
             event_name=flask.request.form.get("event_name"),
-            start_time=get_datetime(start_time),
-            end_time=get_datetime(end_time),
-            minutes=int(flask.request.form.get("minutes")),
-            usernames=userlist
+            start_time=get_datetime(start_time).strftime("%Y-%m-%d-%H-%M-%S"),
+            end_time=get_datetime(end_time).strftime("%Y-%m-%d-%H-%M-%S"),
+            minutes=flask.request.form.get("minutes"),
+            usernames="+".join(userlist)
         )
-        return flask.redirect(flask.url_for("possible_times"), **schedule)
+        return flask.redirect(flask.url_for("possible_times", **schedule))
 
     return flask.render_template("new_event.html", **dct)
 
 @app.route("/possible_times/", methods=["GET"])
 def possible_times():
     event_name = flask.request.args.get("event_name")
+    
     start_time = flask.request.args.get("start_time")
+    start_time = datetime.strptime(start_time, "%Y-%m-%d-%H-%M-%S")
+    
     end_time = flask.request.args.get("end_time")
-    minutes = flask.request.args.get("minutes")
+    end_time = datetime.strptime(end_time, "%Y-%m-%d-%H-%M-%S")
+
+    minutes = int(flask.request.args.get("minutes"))
 
     dbpath = os.path.join(
         os.path.dirname(os.path.abspath(__file__)), 
         "static", 
         "user_data.json"
     )
-    usernames = flask.request.args.get("usernames")
+    usernames = flask.request.args.get("usernames").split("+")
     user_dicts = get_user_dicts(dbpath)
-    user_list = [User(**user_dicts[username]) for username in usernames]
+    user_list = [ User(**user_dicts[username]) for username in usernames ]
 
     times = schedule(start_time, end_time, minutes, user_list)
     
