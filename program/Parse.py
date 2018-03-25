@@ -65,9 +65,12 @@ def scheduler(user1, user2, length):
 
 
 def isConflicting(evt1, evt2):
-	out = False
+	conflicting = False
 
-	if(evt1.getStart() - )
+	if(evt1.getStart() < evt2.getEnd() and evt1.getEnd() > evt2.getStart()): #not 100% confident in logic
+		conflicting = True
+
+	return conflicting
 
 
 
