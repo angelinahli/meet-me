@@ -1,7 +1,7 @@
 $(document).ready(function() {
 	console.log("working");
 	debugger;
-    // $("#start").datepicker();
+    $j("#start").datepicker();
   });
 
 
