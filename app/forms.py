@@ -8,7 +8,7 @@ from program_info import info
 
 def get_length_v(len_dict, field_name):
     """
-    Given a dictionary of min and max lengths, as well as the name of 
+    Given a dictionary of min and max lengths, as well as the name of
     the field we want the length validator for, will return a Length() validator
     """
     min_len = len_dict["min"]
@@ -48,9 +48,11 @@ class SignUpForm(FlaskForm):
         EqualTo("confirm", message="Passwords must match.")
     ])
     confirm = PasswordField("Repeat Password")
+    submit = SubmitField("Sign Up")
+
 
 class SettingsForm(FlaskForm):
-    upload = 
+    pass
 
 class NewEventForm(FlaskForm):
     pass
