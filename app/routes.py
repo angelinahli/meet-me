@@ -5,7 +5,7 @@ from werkzeug.utils import secure_filename
 from app import app
 from program.users import valid_new_user, add_user_db
 from program_info import info
-from forms import LoginForm, SignUpForm
+from forms import LoginForm, SignUpForm, NewEventForm
 
 # db_filepath = flask.url_for("static", filename="user_data.json")
 
@@ -68,4 +68,6 @@ def signup():
 
 @app.route("/new_event/", methods=["GET"])
 def new_event():
-    dct = {"title": "Schedule new event"}
+    new_event = NewEventForm()
+    dct = {"title": "Schedule new event", "form": new_event}
+    return flask.render_template("new_event.html", **dct)

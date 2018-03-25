@@ -7,28 +7,20 @@
     <!-- username -->
     <p>
         {{ form.username.label }} <br>
-        {{ form.username(size=32) }}
+        {{ form.username(size=50) }} <br>
+        {% for m in form.username.errors %}
+            <span style="color: red;">{{m}}</span>
+        {% endfor %}
     </p>
-    {% if form.username.errors %}
-    <ul class="list-group">
-    {% for m in form.username.errors %}
-        <li class="list-group-item">{{m}}</li>
-    {% endfor %}
-    </ul>
-    {% endif %}
 
     <!-- password -->
     <p>
         {{ form.password.label }} <br>
-        {{ form.password(size=32) }}
+        {{ form.password(size=50) }} <br>
+        {% for m in form.password.errors %}
+            <span style="color: red;">{{m}}</span>
+        {% endfor %}
     </p>
-    {% if form.password.errors %}
-    <ul class="list-group">
-    {% for m in form.password.errors %}
-        <li class="list-group-item">{{m}}</li>
-    {% endfor %}
-    </ul>
-    {% endif %}
 
     <button type="submit" class="btn btn-success">Log In</button>
 </form>

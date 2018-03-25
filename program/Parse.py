@@ -7,8 +7,9 @@ users.
 from icalendar import Calendar, Event
 from datetime import datetime
 from pytz import utc # timezone
-from Event import Event
 from datetime import datetime, timedelta
+
+import events
 
 def parse_cal(link):
 	"""Returns a list of all events in someone's calendar"""
@@ -21,7 +22,7 @@ def parse_cal(link):
 	    name = component.get('summary')
 	    start = component.decoded('dtstart') #aware datetime
 	    end = component.decoded('dtend') #aware datetime
-	    temp = Event(name, start, end)
+	    temp = events.Event(name, start, end)
 	    lst.append(temp)
 	return lst
 
@@ -36,7 +37,7 @@ def scheduler(user1, user2, length):
 	pos = []
 	time = start
 	while(time < end - leng):
-		new_event = Event("free", utc.localize(time), utc.localize(time + leng))
+		new_event = events.Event("free", utc.localize(time), utc.localize(time + leng))
 		pos.append(new_event)
 		time += leng
 

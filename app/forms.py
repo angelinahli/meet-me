@@ -1,10 +1,10 @@
 from flask_wtf import FlaskForm
-from wtforms import StringField, PasswordField
+from wtforms import StringField, PasswordField, DateTimeField
 from wtforms.validators import DataRequired, Length, EqualTo
 
 from program_info import info
 
-# helper validator classes
+# helper classes
 
 class DataReqMsg(DataRequired):
     def __init__(self):
@@ -42,4 +42,7 @@ class SignUpForm(FlaskForm):
     confirm = PasswordField("Repeat Password", validators=[
         EqualTo("password", message="Passwords must match.")
     ])
-    elts = [first_name, last_name, username, password, confirm]
+
+class NewEventForm(FlaskForm):
+    start_time = DateTimeField("Start period", validators=[DataReqMsg()])
+    end_time = DateTimeField("End period", validators=[DataReqMsg()])
